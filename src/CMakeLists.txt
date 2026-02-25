@@ -53,6 +53,7 @@ add_subdirectory(UI)
 add_subdirectory(Vehicle)
 add_subdirectory(VideoManager)
 add_subdirectory(Viewer3D)
+add_subdirectory(SkyXTools)
 
 # Platform-specific
 add_subdirectory(Android)
