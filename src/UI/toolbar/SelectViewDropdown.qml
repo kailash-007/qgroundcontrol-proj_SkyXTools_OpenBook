@@ -98,6 +98,21 @@ ToolIndicatorPage {
                 }
             }
 
+            SubMenuButton {
+                id: skyxTools
+                implicitHeight: root._toolButtonHeight
+                Layout.fillWidth: true
+                text: qsTr("SkyXTools")
+                imageResource: "/res/skyxtools.ico"
+                onClicked: {
+                    if (mainWindow.allowViewSwitch()){
+                        console.log("SkxToolButton clicked");
+                        mainWindow.closeIndicatorDrawer(); // Closes the popup
+                        // ErrCode:1512 Add code in the mainwindow to do action....
+                    }
+                }
+            }
+
             ColumnLayout {
                 id: versionColumnLayout
                 Layout.fillWidth: true
