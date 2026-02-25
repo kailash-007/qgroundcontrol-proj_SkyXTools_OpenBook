@@ -171,3 +171,4 @@ Qt*-linux*.tar.*
 .gemini/
 .pytest_cache/
 libs/airmapd/
+android/.gradle/
