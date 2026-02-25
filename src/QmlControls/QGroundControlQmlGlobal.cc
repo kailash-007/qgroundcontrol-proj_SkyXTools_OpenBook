@@ -38,11 +38,12 @@ QGroundControlQmlGlobal::QGroundControlQmlGlobal(QObject *parent)
     , _qgcPositionManager(QGCPositionManager::instance())
     , _missionCommandTree(MissionCommandTree::instance())
     , _videoManager(VideoManager::instance())
-    , _linkManager(LinkManager::instance())
+    , _linkManager(LinkManager::instance())   
     , _multiVehicleManager(MultiVehicleManager::instance())
     , _settingsManager(SettingsManager::instance())
     , _corePlugin(QGCCorePlugin::instance())
     , _globalPalette(new QGCPalette(this))
+    ,_skyXManager(SkyXManager::instance())
 #ifndef QGC_NO_SERIAL_LINK
     , _gpsRtkFactGroup(GPSManager::instance()->gpsRtk()->gpsRtkFactGroup())
 #endif
