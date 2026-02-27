@@ -150,6 +150,11 @@ ApplicationWindow {
         }
     }
 
+    function showSkyXTools()
+    {
+        showTool(qsTr("SkyX Tools"), "qrc:/qml/QGroundControl/SkyX/SkyXToolsViewer.qml", "/res/QGCLogoWhite")
+    }
+
     //-------------------------------------------------------------------------
     //-- Global simple message dialog
 

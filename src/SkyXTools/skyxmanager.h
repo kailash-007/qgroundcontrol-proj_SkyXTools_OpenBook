@@ -7,14 +7,16 @@
 
 #include "LinkInterface.h"
 
+
 class SkyXManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(double  batteryVoltage READ batteryVoltage NOTIFY dataChanged)
-    Q_PROPERTY(double  latitude       READ latitude       NOTIFY dataChanged)
-    Q_PROPERTY(double  longitude      READ longitude      NOTIFY dataChanged)
-    Q_PROPERTY(QString flightMode     READ flightMode     NOTIFY dataChanged)
-    Q_PROPERTY(QString statusText     READ statusText     NOTIFY dataChanged)
+    //Using this we can set the value in qml
+    Q_PROPERTY(double  batteryVoltage MEMBER batteryVoltage NOTIFY dataChanged)
+    Q_PROPERTY(double  latitude       MEMBER latitude       NOTIFY dataChanged)
+    Q_PROPERTY(double  longitude      MEMBER longitude      NOTIFY dataChanged)
+    Q_PROPERTY(QString flightMode     MEMBER flightMode     NOTIFY dataChanged)
+    Q_PROPERTY(QString statusText     MEMBER statusText     NOTIFY dataChanged)
 
 public:
     SkyXManager(QObject *parent = nullptr);
@@ -25,11 +27,11 @@ public:
     void update_data_to_gui();
     void print_data_to_terminal();
 
-    double  batteryVoltage();
-    double  latitude();
-    double  longitude();
-    QString flightMode();
-    QString statusText();
+    double  get_batteryVoltage();
+    double  get_latitude();
+    double  get_longitude();
+    QString get_flightMode();
+    QString get_statusText();
 
     void slot_mavlink_data_to_SkyXTools(LinkInterface *link, const mavlink_message_t &message);
     void slot_mavlink_data_sts_to_SkyXTools(int sysid, uint64_t totalSent, uint64_t totalReceived, uint64_t totalLoss, float lossPercent);
@@ -40,11 +42,11 @@ signals:
 
 private:
     // Member Variables
-    double  _batteryVoltage = 0.0;
-    double  _latitude       = 0.0;
-    double  _longitude      = 0.0;
-    QString _flightMode     = QStringLiteral("UNKNOWN");
-    char    _statusText[50] = "Initializing..."; // Static array as requested
+    double  batteryVoltage = 0.0;
+    double  latitude = 0.0;
+    double  longitude      = 0.0;
+    QString flightMode     = QStringLiteral("UNKNOWN");
+    QString statusText     = "Initializing..."; // Static array as requested
 };
 
 #endif  // SKYXMANAGER_H

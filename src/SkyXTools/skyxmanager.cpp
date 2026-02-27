@@ -1,7 +1,8 @@
 #include "skyxmanager.h"
 #include <QtCore/QApplicationStatic>
 #include <QDebug>
-#include "Comms/MAVLinkProtocol.h"
+
+#include "../Comms/MAVLinkProtocol.h"
 
 Q_APPLICATION_STATIC(SkyXManager, _SkyXManagerInstance);
 
@@ -33,6 +34,12 @@ void SkyXManager::slot_mavlink_data_to_SkyXTools(LinkInterface *link, const mavl
         mavlink_msg_skyx_status_decode(&message, &status);
 
         qDebug()<<status.battery_health<<status.battery_health<<status.flight_counter;
+
+        batteryVoltage = status.battery_health;
+        flightMode = QString::number(status.flight_counter);
+        statusText = QString(status.status_text);
+
+        emit dataChanged();
     }
 }
 
@@ -46,12 +53,12 @@ SkyXManager *SkyXManager::instance()
     return _SkyXManagerInstance();
 }
 
-double SkyXManager::batteryVoltage() { return _batteryVoltage; }
+double SkyXManager::get_batteryVoltage() { return batteryVoltage; }
 
-double SkyXManager::latitude()       { return _latitude; }
+double SkyXManager::get_latitude()       { return latitude; }
 
-double SkyXManager::longitude()      { return _longitude; }
+double SkyXManager::get_longitude()      { return longitude; }
 
-QString SkyXManager::flightMode()     { return _flightMode; }
+QString SkyXManager::get_flightMode()     { return flightMode; }
 
-QString SkyXManager::statusText()     { return QString(_statusText); }
+QString SkyXManager::get_statusText()     { return statusText; }

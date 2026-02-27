@@ -108,7 +108,7 @@ ToolIndicatorPage {
                     if (mainWindow.allowViewSwitch()){
                         console.log("SkxToolButton clicked");
                         mainWindow.closeIndicatorDrawer(); // Closes the popup
-                        // ErrCode:1512 Add code in the mainwindow to do action....
+                        mainWindow.showSkyXTools();
                     }
                 }
             }
