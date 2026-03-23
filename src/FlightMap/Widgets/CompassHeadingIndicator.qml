@@ -10,7 +10,7 @@ Canvas {
     height:             width
 
     property real compassSize
-    property real heading
+    property real heading: 0
     property bool simplified:    false
 
     property var _qgcPal: QGroundControl.globalPalette

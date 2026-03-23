@@ -5,5 +5,8 @@ qt_add_qml_module(SkyX
     RESOURCE_PREFIX /qml
     QML_FILES
         SkyXToolsViewer.qml   # ← exact filename must match
+        SkyXCompass.qml
     NO_PLUGIN
+    QML_FILES SkyXCompass.qml
+    QML_FILES SkyXComport.qml
 )

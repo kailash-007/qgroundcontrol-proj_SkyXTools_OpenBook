@@ -171,6 +171,8 @@ bool LinkManager::createConnectedLink(SharedLinkConfigurationPtr &config)
 void LinkManager::_communicationError(const QString &title, const QString &error)
 {
     qgcApp()->showAppMessage(error, title);
+
+    emit skyx_manager_comm_err(error, title);
 }
 
 SharedLinkInterfacePtr LinkManager::mavlinkForwardingLink()
@@ -639,12 +641,16 @@ void LinkManager::removeConfiguration(LinkConfiguration *config)
         return;
     }
 
+
     LinkInterface* const link = config->link();
     if (link) {
         link->disconnect();
     }
 
+
+    qDebug()<<"-------------- Inside Link Manager disconnected called ";
     _removeConfiguration(config);
+    qDebug()<<"-------------- Inside Link Manager disconnected executed";
     saveLinkConfigurationList();
 }
 

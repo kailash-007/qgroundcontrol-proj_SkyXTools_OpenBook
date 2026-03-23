@@ -115,6 +115,7 @@ public:
     static constexpr uint8_t invalidMavlinkChannel() { return std::numeric_limits<uint8_t>::max(); }
 
 signals:
+    void skyx_manager_comm_err(const QString &title, const QString &error);
     void mavlinkSupportForwardingEnabledChanged();
     void isBluetoothAvailableChanged();
 
